@@ -49,7 +49,9 @@ namespace Discord_Bot
 
         private static Task FinishSetup()
         {
-            _services!.GetRequiredService<MessageHandler>().ChatRequestReceived += _services!.GetRequiredService<ChatHandler>().HandleRequestAsync;
+            var chatHandler = _services!.GetRequiredService<ChatHandler>();
+            _services!.GetRequiredService<MessageHandler>().ChatRequestReceived += chatHandler.HandleRequestAsync;
+            _services!.GetRequiredService<DiscordSocketClient>().ThreadDeleted += chatHandler.HandleThreadDeleting;
             return Task.CompletedTask;
         }
 
