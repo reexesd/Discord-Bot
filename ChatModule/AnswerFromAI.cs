@@ -44,14 +44,16 @@ namespace Discord_Bot.ChatModule
             string[] partialAnswers = new string[msgPartsCount + 1];
 
             int currentPos = 0;
+            int nextPos = currentPos + 2000;
             for (int i = 0; i < partialAnswers.Length; i++)
             {
                 if (currentPos + 2000 < _answer.Length)
-                    partialAnswers[i] = _answer[currentPos..2000];
+                    partialAnswers[i] = _answer[currentPos..nextPos];
                 else
                     partialAnswers[i] = _answer[currentPos..];
 
-                currentPos += 2000;
+                currentPos = nextPos;
+                nextPos += currentPos;
             }
 
             return partialAnswers;

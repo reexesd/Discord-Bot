@@ -17,7 +17,6 @@ namespace Discord_Bot.ChatModule
         private readonly FileManager _fileManager = fileManager;
 
         public async Task HandleRequestAsync(IUserMessage message)
-
         {
             string request = message.Content.Remove(0, _mentionLength);
 
@@ -36,6 +35,14 @@ namespace Discord_Bot.ChatModule
                 else
                     await chat.SendMessageAsync(answer.Content);
             }
+        }
+
+        public Task HandleThreadDeleting(Cacheable<SocketThreadChannel, ulong> thread)
+        {
+            if(_chatService.IsChatExists(thread.Value))
+                _chatService.DeleteChat(thread.Value);
+
+            return Task.CompletedTask;
         }
 
         public async Task<AnswerFromAI> GetResponseFromAI(IThreadChannel chat, string request)
