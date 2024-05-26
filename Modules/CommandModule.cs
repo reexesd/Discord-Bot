@@ -1,10 +1,6 @@
 ﻿using Discord;
 using Discord.Interactions;
-using Discord.Rest;
-using Discord.WebSocket;
 using Discord_Bot.ChatModule;
-using OpenAI_API;
-using System.Runtime.CompilerServices;
 
 namespace Discord_Bot.Modules
 {

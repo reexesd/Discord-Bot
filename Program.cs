@@ -1,11 +1,9 @@
-using Microsoft.Extensions.DependencyInjection;
 using Discord;
 using Discord.Interactions;
 using Discord.WebSocket;
 using System.Reflection;
 using Discord_Bot.Logger;
 using OpenAI_API;
-using OpenAI_API.Models;
 using Discord_Bot.ChatModule;
 
 namespace Discord_Bot
